@@ -3,8 +3,10 @@
 <a class="button" href="/">Home</a>
 <hr>
 <br>
+
 <% @landmarks.each do |landmark| %>
   <%= landmark.name %>
+  <%= landmark.year_completed %>
   <br>
 <% end %>
 <br>

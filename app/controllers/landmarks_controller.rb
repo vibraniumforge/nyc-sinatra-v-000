@@ -10,4 +10,10 @@ class LandmarksController < ApplicationController
     erb :'landmarks/new'
   end
 
+  get'/landmarks/:id/edit' do
+
+  end
+
+  post '/landmarks/'
+
 end
