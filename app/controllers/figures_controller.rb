@@ -36,10 +36,9 @@ class FiguresController < ApplicationController
         landmark=Title.find(landmark_id)
         @figure.landmarks << landmark
       end
+    end
       @figure.save
       redirect to "/figures/#{@figure.id}"
-    end
-
   end
 
   get '/figures/:id/edit' do
