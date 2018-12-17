@@ -1,3 +1,4 @@
 class FigureTitle < ActiveRecord::Base
-  # add relationships here
+  has_many :tiles
+  has_many :figures
 end
