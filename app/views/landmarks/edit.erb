@@ -3,14 +3,8 @@
 <a class="button" href="/">Home</a>
 <hr>
 <br>
-<<<<<<< HEAD
 <h3><%= @landmark.id %></h3>
 
-=======
-<%binding.pry>
-<h3><%= @landmark.id %></h3>
-<%binding.pry%>
->>>>>>> 9861711745982202e436ba4e51c1b604c1520291
 <form method="POST" action="/landmarks/<%= @landmark.id %>">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <label for "name">Name:</label>
