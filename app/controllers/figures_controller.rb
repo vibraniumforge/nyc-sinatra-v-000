@@ -17,7 +17,6 @@ class FiguresController < ApplicationController
     @landmark=params[:landmark]
     @landmark_ids=params[:figure][:landmark_ids]
     @figure=Figure.create(:name => params[:figure][:name])
-    binding.pry
     if !@title[:name].empty?
       title=Title.create(:name=>@title[:name])
       @figure.titles << title
@@ -28,12 +27,10 @@ class FiguresController < ApplicationController
         @figure.titles << title
       end
     end
-    binding.pry
     if !@landmark[:name].empty?
       landmark=Landmark.create(:name=>@landmark[:name])
       @figure.landmarks << landmark
     end
-    binding.pry
     if @landmark_ids
       @landmark_ids.each do |landmark_id|
         landmark=Landmark.find(landmark_id)
@@ -57,10 +54,35 @@ class FiguresController < ApplicationController
   end
 
   patch '/figures/:id' do
+    @title=params[:title]
+    @title_ids=params[:figure][:title_ids]
+    @landmark=params[:landmark]
+    @landmark_ids=params[:figure][:landmark_ids]
     @figure=Figure.find(params[:id])
-    @figure.update(params[:figure])
+    @figure.name=params[:figure][:name]
+    if @title_ids
+      @figure.titles.clear
+      @title_ids.each do |title_id|
+      title = Title.find(title_id)
+      @figure.titles << title
+      end
+    end
+    if !@title[:name].empty?
+      title=Title.create(:name => @title[:name])
+      @figure.titles << title
+    end
+    if @landmark_ids
+      @figure.landmarks.clear
+      @landmark_ids.each do |landmark_id|
+      landmark = Landmark.find(landmark_id)
+      @figure.landmarks << landmark
+      end
+    end
+    if !@landmark[:name].empty?
+      landmark=Landmark.create(:name => @landmark[:name])
+      @figure.landmarks << landmark
+    end
     @figure.save
-    binding.pry
     redirect to "/figures/#{@figure.id}"
   end
 

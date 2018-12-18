@@ -3,24 +3,24 @@
 <a class="button" href="/">Home</a>
 <hr>
 <br>
-<h1><%=@figure.name%></h1>
+
+<h1><%= @figure.name %></h1>
 Titles:
 <ul class="list-style:none">
-<% Title.all.each do |title| %>
-<li>
-  <%= title.name %>
-</li>
+<% @figure.titles.each do |title| %>
+  <li>
+    <%= title.name %>
+  </li>
 <% end %>
 </ul>
 <hr>
 Landmarks:
 <ul class="list-style:none">
-<% Landmark.all.each do |landmark| %>
-<li>
-  <%= landmark.name %>
-</li>
+<% @figure.landmarks.each do |landmark| %>
+  <li>
+    <%= landmark.name %>
+  </li>
 <% end %>
 </ul>
 <a href="figures/<%= @figure.id %>/edit"><input type="button" value="Edit"></a>
 <br>
-<%binding.pry%>
