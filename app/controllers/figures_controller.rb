@@ -17,6 +17,7 @@ class FiguresController < ApplicationController
     @landmark=params[:landmark]
     @landmark_ids=params[:figure][:landmark_ids]
     @figure=Figure.create(:name => params[:figure][:name])
+    binding.pry
     if !@title[:name].empty?
       title=Title.create(:name=>@title[:name])
       @figure.titles << title
@@ -27,10 +28,12 @@ class FiguresController < ApplicationController
         @figure.titles << title
       end
     end
+    binding.pry
     if !@landmark[:name].empty?
       landmark=Landmark.create(:name=>@landmark[:name])
       @figure.landmarks << landmark
     end
+    binding.pry
     if @landmark_ids
       @landmark_ids.each do |landmark_id|
         landmark=Landmark.find(landmark_id)
