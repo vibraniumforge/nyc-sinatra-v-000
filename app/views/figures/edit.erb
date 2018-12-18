@@ -3,12 +3,15 @@
 <a class="button" href="/">Home</a>
 <hr>
 <br>
-
+<h2>Edit <%=@figure.name %></h2>
 <form method="POST" action="/figures/<%= @figure.id %>">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <label for "figure_name">Name:</label>
-  <input type="text" name="figure[name]" id="figure_name" value="<%= figure.name %>">
-<%binding.pry%>
+  <input type="text"
+  name="figure[name]"
+  id="figure_name"
+  value="<%= @figure.name %>"
+  >
   <br>
   <h3>Titles</h3>
   <p>Choose an existing title</p>
@@ -26,9 +29,8 @@
   <h3>OR create a New Title</h3>
   <input type="text" name="title[name]" id="new_title">
   <br>
-<%binding.pry%>
   <h3>Landmarks</h3>
-  <% @landmarks.all.each do |landmark| %>
+  <% @landmarks.each do |landmark| %>
     <input
     type="checkbox"
     id="landmark_<%= landmark.id %>"
@@ -41,6 +43,7 @@
   <h3>Or create a New Landmark:</h3>
   <input type="text" name="landmark[name]" id="new_landmark">
   <input type="text" name="year" id="year">
+  <br>
   <input type="submit" value="Edit Figure">
 </form>
 <br>

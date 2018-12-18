@@ -3,9 +3,7 @@
 <a class="button" href="/">Home</a>
 <hr>
 <br>
-
-<h1><%=figure.name%></h1>
-
+<h1><%=@figure.name%></h1>
 Titles:
 <ul class="list-style:none">
 <% Title.all.each do |title| %>
@@ -23,5 +21,6 @@ Landmarks:
 </li>
 <% end %>
 </ul>
-<a href="figures/<%=figures.id%>/edit"><input type="button" value="Edit"></a>
+<a href="figures/<%= @figure.id %>/edit"><input type="button" value="Edit"></a>
 <br>
+<%binding.pry%>
